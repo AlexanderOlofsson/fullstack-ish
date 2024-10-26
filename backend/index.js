@@ -16,12 +16,14 @@ const app = express()
 
 app.get('/api', async (_request, response) => {
   const { rows } = await client.query(
-    'SELECT * FROM name WHERE name = $1',
+    'SELECT * FROM characters WHERE name = $1',
     ['Aatrox']
   )
 
   response.send(rows)
 })
+
+
 
 app.use(express.static(path.join(path.resolve(), 'dist')))
 
